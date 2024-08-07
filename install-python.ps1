@@ -2,7 +2,7 @@
 $pythonInstallerUrl = "https://www.python.org/ftp/python/3.12.4/python-3.12.4-amd64.exe"
 
 # Define the path to save the installer
-$installerPath = "$env:TEMP\python-3.12.0-amd64.exe"
+$installerPath = "$env:TEMP\python-3.12.4-amd64.exe"
 
 # Download the Python installer
 Write-Output "Downloading Python installer..."
@@ -13,11 +13,6 @@ Write-Output "Python installer downloaded to $installerPath"
 Write-Output "Running the Python installer..."
 Start-Process -FilePath $installerPath -ArgumentList "/quiet InstallAllUsers=1 PrependPath=0" -NoNewWindow -Wait
 Write-Output "Python installation completed"
-
-# Clean up the installer file
-Write-Output "Cleaning up the installer file..."
-Remove-Item -Path $installerPath
-Write-Output "Installer file removed"
 
 # Define the Python installation path
 $pythonInstallPath = "C:\Program Files\Python312"
@@ -38,4 +33,10 @@ if (Test-Path -Path "$pythonInstallPath\python.exe") {
 } else {
     Write-Output "Python executable not found at $pythonInstallPath. Installation might have failed."
 }
+
+# Clean up the installer file
+Write-Output "Cleaning up the installer file..."
+Remove-Item -Path $installerPath
+Write-Output "Installer file removed"
+
 
